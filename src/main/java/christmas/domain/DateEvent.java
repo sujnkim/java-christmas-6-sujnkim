@@ -38,9 +38,16 @@ public enum DateEvent {
     }
 
 
-    public static List<DateEvent> findApplyEventByDate(int visitDate){
+    public static List<DateEvent> findApplyEventByDate(int visitDate) {
         return Arrays.stream(DateEvent.values())
                 .filter(discount -> discount.days.contains(visitDate))
                 .toList();
+    }
+
+    public static int getDDayDiscountPrice(int visitDate) {
+        if (CHRISTMAS.days.contains(visitDate)) {
+            return 1000 + (visitDate - 1) * 100;
+        }
+        return 0;
     }
 }
