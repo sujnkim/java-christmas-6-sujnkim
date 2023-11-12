@@ -3,8 +3,7 @@ package christmas.domain;
 import java.util.EnumMap;
 import java.util.Map;
 
-import static christmas.utils.ErrorMessage.INVALID_MAX_QUANTITY;
-import static christmas.utils.ErrorMessage.INVALID_ORDER;
+import static christmas.utils.ErrorMessage.*;
 
 public class MenuOrder {
     private final static int MAX_QUANTITY = 20;
@@ -14,6 +13,7 @@ public class MenuOrder {
     public MenuOrder(Map<String, Integer> menus) {
         validateQuantityPerMenu(menus);
         validateMaxQuantitySum(menus);
+        validateCategoryCondition(menus);
         this.menuOrder = createOrder(menus);
     }
 
@@ -49,6 +49,12 @@ public class MenuOrder {
         if(quantity > MAX_QUANTITY){
             throw new IllegalArgumentException(
                     INVALID_MAX_QUANTITY.getMessage());
+        }
+    }
+
+    private void validateCategoryCondition(Map<String, Integer> menus){
+        if(MenuCategory.hasOrderOnlyDrinkTypeMenu(menus)){
+            throw new IllegalArgumentException(ONLY_DRINK_ORDER.getMessage());
         }
     }
 
