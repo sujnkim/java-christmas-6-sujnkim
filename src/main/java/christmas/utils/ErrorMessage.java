@@ -1,7 +1,7 @@
 package christmas.utils;
 
 public enum ErrorMessage {
-    INVALID_ORDER_NAME("유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    INVALID_ORDER("유효하지 않은 주문입니다. 다시 입력해 주세요.");
 
 
 

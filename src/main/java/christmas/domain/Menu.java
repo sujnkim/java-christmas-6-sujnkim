@@ -4,7 +4,7 @@ package christmas.domain;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-import static christmas.utils.ErrorMessage.INVALID_ORDER_NAME;
+import static christmas.utils.ErrorMessage.INVALID_ORDER;
 
 public enum Menu {
     MUSHROOM_SOUP("양송이수프", 6000),
@@ -35,7 +35,7 @@ public enum Menu {
                     .filter(menu -> menu.menuName == name)
                     .findFirst().get();
         } catch (NoSuchElementException error) {
-            throw new IllegalArgumentException(INVALID_ORDER_NAME.getMessage());
+            throw new IllegalArgumentException(INVALID_ORDER.getMessage());
         }
     }
 
