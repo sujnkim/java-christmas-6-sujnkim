@@ -3,6 +3,7 @@ package christmas.domain;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 public enum MenuCategory {
 
@@ -39,19 +40,23 @@ public enum MenuCategory {
     }
 
 
-    public static boolean hasOrderOnlyDrinkTypeMenu(EnumMap<Menu, Integer> orders) {
+    public static boolean hasOrderOnlyDrinkTypeMenu(Map<String, Integer> menus) {
 
-        if (orders.size() == countDrinkTypeMenu(orders)) {
+        if (menus.size() == countDrinkTypeMenu(menus)) {
             return true;
         }
         return false;
     }
 
-    private static int countDrinkTypeMenu(EnumMap<Menu, Integer> orders) {
-        return orders.entrySet().stream()
-                .filter(order -> findCategoryByMenu(order.getKey()) == DRINK)
+    private static int countDrinkTypeMenu(Map<String, Integer> menus) {
+        return menus.entrySet().stream()
+                .filter(menu -> findCategoryByName(menu.getKey()) == DRINK)
                 .mapToInt(n -> 1)
                 .sum();
+    }
+
+    private static MenuCategory findCategoryByName(String menuName) {
+        return findCategoryByMenu(Menu.findMenuByName(menuName));
     }
 
 }
