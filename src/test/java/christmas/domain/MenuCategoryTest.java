@@ -9,6 +9,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 
 import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -46,11 +48,15 @@ class MenuCategoryTest {
     }
 
 
-    @DisplayName("[SUCCESS]주문 메뉴들이 주어졌을 때 음료 카테고리에 속하는 메뉴가 있으면 true를 반환한다")
+    @DisplayName("[SUCCESS]주문 메뉴들이 주어졌을 때 음료 카테고리에 속하는 메뉴가 없으면 false를 반환한다")
     @Test
-    void checkIsThereDrinkTypeMenu() {
-        assertThat(MenuCategory
-                .hasOrderOnlyDrinkTypeMenu(orders)
+    void checkIsThereDrinkTypeMenu(){
+        Map<String,Integer> menus = new HashMap<String,Integer>();
+        menus.put("양송이수프", 1);
+        menus.put("티본스테이크", 1);
+
+        assertThat(
+                MenuCategory.hasOrderOnlyDrinkTypeMenu(menus)
         ).isEqualTo(false);
     }
 
