@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class MenuOrderTest {
@@ -62,6 +63,17 @@ class MenuOrderTest {
         assertThatThrownBy(() -> new MenuOrder(onlyDrink))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 음료만 주문 시, 주문할 수 없습니다. 음료 이외의 메뉴도 포함해서 다시 입력해주세요.");
+    }
+
+    @DisplayName("[SUCCESS] 주문한 메뉴의 총주문 금액을 반환한다")
+    @Test
+    void getSumOfMenusOrdered(){
+        Map<String, Integer> menus = new HashMap<String, Integer>();
+        menus.put("양송이수프", 1);
+        menus.put("시저샐러드", 1);
+
+        MenuOrder order = new MenuOrder(menus);
+        assertThat(order.calculateTotalMenuPrice()).isEqualTo(14000);
     }
 
 }
