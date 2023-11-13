@@ -25,4 +25,8 @@ public class Gift {
         return gift.getMenuPriceSum(this.count);
     }
 
+    public String getGiftName(){
+        return gift.getMenuName();
+    }
+
 }
