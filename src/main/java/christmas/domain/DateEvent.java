@@ -5,29 +5,39 @@ import java.util.List;
 
 public enum DateEvent {
 
-    CHRISTMAS("크리스마스 디데이",
-            Arrays.asList(
-                    1, 2, 3, 4, 5,
-                    6, 7, 8, 9, 10,
-                    11, 12, 13, 14, 15,
-                    16, 17, 18, 19, 20,
-                    21, 22, 23, 24, 25)),
-    WEEKDAY("평일",
-            Arrays.asList(
-                    3, 10, 17, 24, 31,
-                    4, 11, 18, 25,
-                    5, 12, 19, 26,
-                    6, 13, 20, 27,
-                    7, 14, 21, 28
-            )),
-    WEEKEND("주말",
-            Arrays.asList(
-                    1, 8, 15, 22, 29,
-                    2, 9, 16, 23, 30
-            )),
-    SPECIAL("특별",
-            Arrays.asList(3, 10, 17, 24, 25, 31));
+    CHRISTMAS("크리스마스 디데이", DateConstant.CHRISTMAS_DDAYS) {
+        @Override
+        int calculateDiscount(Visitor visitor) {
+            return 1000 + (visitor.getVisitDate() - 1) * 100;
+        }
+    },
+    WEEKDAY("평일", DateConstant.WEEKDAYS) {
+        @Override
+        int calculateDiscount(Visitor visitor) {
+            int count = calculateCategoryMenuCount(
+                    visitor,
+                    MenuCategory.DESSERT);
+            return count * WEEKEND_DISCOUNT_PRICE;
+        }
+    },
+    WEEKEND("주말", DateConstant.WEEKENDS) {
+        @Override
+        int calculateDiscount(Visitor visitor) {
+            int count = calculateCategoryMenuCount(
+                    visitor,
+                    MenuCategory.MAIN);
+            return count * WEEKEND_DISCOUNT_PRICE;
+        }
+    },
+    SPECIAL("특별", DateConstant.SPECIAL_DAYS) {
+        @Override
+        int calculateDiscount(Visitor visitor) {
+            return SPECIAL_DISCOUNT_PRICE;
+        }
+    };
 
+    private static final int WEEKEND_DISCOUNT_PRICE = 2023;
+    private static final int SPECIAL_DISCOUNT_PRICE = 1000;
 
     private final String eventType;
     private final List<Integer> days;
@@ -37,6 +47,17 @@ public enum DateEvent {
         this.days = days;
     }
 
+    abstract int calculateDiscount(Visitor visitor);
+
+    private static int calculateCategoryMenuCount(
+            Visitor visitor,
+            MenuCategory category
+    ){
+        return MenuCategory.calculateMenuQuantityByCategory(
+                visitor.getMenuOrder(),
+                category
+        );
+    }
 
     public static List<DateEvent> findApplyEventByDate(int visitDate) {
         return Arrays.stream(DateEvent.values())
@@ -44,10 +65,7 @@ public enum DateEvent {
                 .toList();
     }
 
-    public static int getDDayDiscountPrice(int visitDate) {
-        if (CHRISTMAS.days.contains(visitDate)) {
-            return 1000 + (visitDate - 1) * 100;
-        }
-        return 0;
+    public String getEventType() {
+        return eventType;
     }
 }
