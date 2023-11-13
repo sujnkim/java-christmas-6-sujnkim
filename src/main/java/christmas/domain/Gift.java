@@ -1,12 +1,12 @@
 package christmas.domain;
 
-public class GiftEvent {
+public class Gift {
     private final static int GIFT_OFFER_LEAST_PRICE = 120000;
     private final static Menu gift = Menu.CHAMPAGNE;
 
     private final int count;
 
-    public GiftEvent(int totalPrice) {
+    public Gift(int totalPrice) {
         this.count = createGift(totalPrice);
     }
 
