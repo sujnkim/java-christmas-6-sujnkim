@@ -12,8 +12,8 @@ public enum MenuCategory {
     DESSERT("디저트", Arrays.asList(Menu.CHOCOLATE_CAKE, Menu.ICE_CREAM)),
     DRINK("음료", Arrays.asList(Menu.ZERO_COKE, Menu.RED_WINE, Menu.CHAMPAGNE));
 
-    private String category;
-    private List<Menu> menus;
+    private final String category;
+    private final List<Menu> menus;
 
     MenuCategory(String category, List<Menu> menus) {
         this.category = category;

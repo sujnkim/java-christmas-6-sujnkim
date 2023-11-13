@@ -6,7 +6,7 @@ public class VisitDate {
     private static final int MIN_DATE = 1;
     private static final int MAX_DATE = 31;
 
-    private int visitDate;
+    private final int visitDate;
 
     public VisitDate(int visitDate) {
         validate(visitDate);

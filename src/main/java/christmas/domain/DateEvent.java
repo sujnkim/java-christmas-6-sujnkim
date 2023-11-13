@@ -29,8 +29,8 @@ public enum DateEvent {
             Arrays.asList(3, 10, 17, 24, 25, 31));
 
 
-    private String eventType;
-    private List<Integer> days;
+    private final String eventType;
+    private final List<Integer> days;
 
     DateEvent(String eventType, List<Integer> days) {
         this.eventType = eventType;
