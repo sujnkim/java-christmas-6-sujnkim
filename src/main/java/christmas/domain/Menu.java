@@ -39,4 +39,9 @@ public enum Menu {
         }
     }
 
+
+    public int getMenuPriceSum(int count) {
+        return this.price * count;
+    }
+
 }
