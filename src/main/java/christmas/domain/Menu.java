@@ -20,8 +20,8 @@ public enum Menu {
     RED_WINE("레드와인", 60000),
     CHAMPAGNE("샴페인", 25000);
 
-    private String menuName;
-    private int price;
+    private final String menuName;
+    private final int price;
 
     Menu(String menuName, int price) {
         this.menuName = menuName;
