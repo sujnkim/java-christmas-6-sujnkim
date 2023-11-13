@@ -7,11 +7,10 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-class DateDiscountTest {
+class DateEventTest {
 
     @DisplayName("[SUCCESS] 해당 날짜에 적용되는 이벤트의 리스트를 반환한다")
     @Test
