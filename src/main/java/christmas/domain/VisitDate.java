@@ -18,4 +18,8 @@ public class VisitDate {
             throw new IllegalArgumentException(INVALID_VISIT_DATE.getMessage());
         }
     }
+
+    public int getVisitDate() {
+        return visitDate;
+    }
 }
