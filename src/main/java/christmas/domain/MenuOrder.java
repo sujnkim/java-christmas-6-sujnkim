@@ -8,7 +8,7 @@ import static christmas.utils.ErrorMessage.*;
 public class MenuOrder {
     private final static int MAX_QUANTITY = 20;
 
-    private final Map<Menu, Integer> menuOrder;
+    private final EnumMap<Menu, Integer> menuOrder;
 
     public MenuOrder(Map<String, Integer> menus) {
         validateQuantityPerMenu(menus);
@@ -17,7 +17,7 @@ public class MenuOrder {
         this.menuOrder = createOrder(menus);
     }
 
-    private Map<Menu, Integer> createOrder(Map<String, Integer> menus) {
+    private EnumMap<Menu, Integer> createOrder(Map<String, Integer> menus) {
         EnumMap<Menu, Integer> menuOrder = new EnumMap<>(Menu.class);
 
         menus.entrySet().stream()
@@ -64,5 +64,9 @@ public class MenuOrder {
                         .getMenuPriceSum(menu.getValue()))
                 .mapToInt(Integer::intValue)
                 .sum();
+    }
+
+    public EnumMap<Menu, Integer> getMenuOrder(){
+        return menuOrder;
     }
 }
