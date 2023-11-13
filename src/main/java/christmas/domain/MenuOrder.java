@@ -58,4 +58,11 @@ public class MenuOrder {
         }
     }
 
+    public int calculateTotalMenuPrice(){
+        return menuOrder.entrySet().stream()
+                .map(menu->menu.getKey()
+                        .getMenuPriceSum(menu.getValue()))
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
 }
