@@ -44,4 +44,8 @@ public enum Menu {
         return this.price * count;
     }
 
+    public String getMenuName() {
+        return this.menuName;
+    }
+
 }
