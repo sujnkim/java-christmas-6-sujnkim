@@ -1,11 +1,10 @@
 package christmas.domain;
 
-import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static christmas.domain.Menu.MUSHROOM_SOUP;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,11 +20,21 @@ class MenuTest {
                 .hasMessage("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
 
-
     @DisplayName("[SUCCESS]Menu에 해당 이름을 가진 메뉴가 있으면 Menu를 반환")
     @Test
-    void findMenuByName() {;
+    void findMenuByName() {
         assertThat(Menu.findMenuByName("양송이수프")).isEqualTo(MUSHROOM_SOUP);
+    }
+
+    @DisplayName("[SUCCESS]한 메뉴의 여러개 가격합을 반환")
+    @ParameterizedTest
+    @CsvSource(value = {
+            "MUSHROOM_SOUP,1,6000",
+            "SEAFOOD_PASTA,2,70000",
+            "CHAMPAGNE,1,25000"
+    })
+    void checkGetMenuPriceByMenuName(Menu input, int count, int expected) {
+        assertThat(input.getMenuPriceSum(count)).isEqualTo(expected);
     }
 }
 
