@@ -22,10 +22,24 @@ class GiftTest {
         assertThat(gift.getGiftCount()).isEqualTo(expected);
     }
 
+    @DisplayName("[SUCCESS] 증정메뉴 개수를 반환한다")
+    @Test
+    void getGiftMenuCountTest(){
+        Gift gift = new Gift(120000);
+        assertThat(gift.getGiftCount()).isEqualTo(1);
+    }
+
     @DisplayName("[SUCCESS] 증정품을 받을 수 있을 때 증정 혜택 금액을 반환한다")
     @Test
     void getGiftBenefitPriceWhenAvailableGift(){
         Gift gift = new Gift(120000);
         assertThat(gift.getGiftBenefitPrice()).isEqualTo(25000);
+    }
+
+    @DisplayName("[SUCCESS] 증정 메뉴의 이름을 반환한다")
+    @Test
+    void getGiftMenuNameTest(){
+        Gift gift = new Gift(120000);
+        assertThat(gift.getGiftName()).isEqualTo("샴페인");
     }
 }
