@@ -28,7 +28,6 @@ public class BenefitResult {
                         createDiscountMent(discount.getEventType()),
                         discount.calculateDiscount(visitor))
                 );
-
         return result;
     }
 
@@ -39,7 +38,6 @@ public class BenefitResult {
 
     public Map<String, Integer> createBenefitHistory(Gift gift) {
         Map<String, Integer> result = new HashMap<>();
-
         benefits.entrySet().stream()
                 .forEach(discount -> result.put(discount.getKey(),discount.getValue()));
 

@@ -55,8 +55,7 @@ public class OutputView {
         System.out.println(String.format(
                         PRICE_MESSAGE_FORMAT,
                         formatter.format(visitor.getTotalMenuPrice())
-                )
-        );
+                ));
         System.out.println(EMPTY_LINE);
     }
 

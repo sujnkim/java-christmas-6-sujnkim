@@ -59,6 +59,7 @@ public class MenuOrder {
         }
     }
 
+
     public int calculateTotalMenuPrice() {
         return menuOrder.entrySet().stream()
                 .map(menu -> menu.getKey()
@@ -67,7 +68,9 @@ public class MenuOrder {
                 .sum();
     }
 
+
     public EnumMap<Menu, Integer> getMenuOrder() {
         return menuOrder;
     }
+
 }
