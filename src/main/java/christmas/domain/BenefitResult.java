@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class BenefitResult {
+    private static final int EVENT_APPLY_PRICE_STANDARD = 10000;
     private static final String DISCOUNT_EMPTY = "없음";
     private static final String GIFT_EVENT = "증정 이벤트";
     private static final String DISCOUNT = " 할인";
@@ -19,16 +20,22 @@ public class BenefitResult {
 
     private Map<String, Integer> createDiscount(Visitor visitor, Gift gift) {
         Map<String, Integer> result = new HashMap<>();
-        List<DateEvent> discounts = DateEvent
-                .findApplyEventByDate(visitor.getVisitDate());
+        List<DateEvent> discounts = DateEvent.findApplyEventByDate(visitor.getVisitDate());
+
+        if(isTotalPriceLessThanStandard(visitor)){
+            return result;
+        }
 
         discounts.stream()
                 .filter(discount -> discount.calculateDiscount(visitor) != 0)
                 .forEach(discount -> result.put(
                         createDiscountMent(discount.getEventType()),
-                        discount.calculateDiscount(visitor))
-                );
+                        discount.calculateDiscount(visitor)));
         return result;
+    }
+
+    private boolean isTotalPriceLessThanStandard(Visitor visitor){
+        return visitor.getTotalMenuPrice() < EVENT_APPLY_PRICE_STANDARD;
     }
 
     private String createDiscountMent(String discountName) {
