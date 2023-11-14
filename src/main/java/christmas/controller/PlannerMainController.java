@@ -23,6 +23,7 @@ public class PlannerMainController {
         printResultDataAfterApplyEvent(benefitResult, visitor, gift);
     }
 
+
     private Visitor recieveVisitorData() {
         OutputView.printWelcomeMessage();
 
@@ -51,17 +52,18 @@ public class PlannerMainController {
         }
     }
 
+
     private void printVisitorDataBeforeApplyEvent(Visitor visitor) {
         OutputView.printResultStartMessage(visitor);
         OutputView.printMenuOrder(visitor);
         OutputView.printTotalPrice(visitor);
     }
 
-
     private void printResultDataAfterApplyEvent(
             BenefitResult benefitResult,
             Visitor visitor,
-            Gift gift) {
+            Gift gift
+    ) {
         OutputView.printBenefitsResult(benefitResult.createBenefitHistory(gift));
         OutputView.printAllBenefitAmount(benefitResult, gift);
         OutputView.printExpectedPayment(benefitResult, visitor);
