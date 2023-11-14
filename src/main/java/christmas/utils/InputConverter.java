@@ -30,11 +30,22 @@ public class InputConverter {
     private static void storeMenu(String value, Map<String, Integer> result) {
         validateEachMenuForm(value);
         String[] split = value.split(DELIMITER_DASH);
+
+        validateMenuAlreadyExist(split[0], result);
         result.put(split[0], getMenuCount(split[1]));
     }
 
     private static void validateEachMenuForm(String value) {
         if(!value.contains(DELIMITER_DASH)){
+            throw new IllegalArgumentException(INVALID_ORDER.getMessage());
+        }
+    }
+
+    private static void validateMenuAlreadyExist(
+            String name,
+            Map<String, Integer> result
+    ){
+        if(result.containsKey(name)){
             throw new IllegalArgumentException(INVALID_ORDER.getMessage());
         }
     }
