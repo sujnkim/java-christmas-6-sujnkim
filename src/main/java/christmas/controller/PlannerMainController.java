@@ -1,6 +1,5 @@
 package christmas.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import christmas.domain.BenefitResult;
 import christmas.domain.Gift;
 import christmas.domain.plan.Badge;
@@ -14,29 +13,25 @@ public class PlannerMainController {
 
 
     public void start() {
-        OutputView.printWelcomeMessage();
-
-        VisitDate visitDate = recieveVisitDate();
-        MenuOrder menuOrder = recieveMenuOrder();
-        Visitor visitor = new Visitor(visitDate, menuOrder);
-
-        OutputView.printResultStartMessage(visitor);
-        OutputView.printMenuOrder(visitor);
-        OutputView.printTotalPrice(visitor);
+        Visitor visitor = recieveVisitorData();
+        printVisitorDataBeforeApplyEvent(visitor);
 
         Gift gift = provideGift(visitor);
         OutputView.printGiftMenu(gift);
 
         BenefitResult benefitResult = new BenefitResult(visitor, gift);
-        OutputView.printBenefitsResult(benefitResult.createBenefitHistory(gift));
-        OutputView.printAllBenefitAmount(benefitResult, gift);
-        OutputView.printExpectedPayment(benefitResult, visitor);
+        printResultDataAfterApplyEvent(benefitResult, visitor, gift);
 
         privideBadge(benefitResult.calculateAllBenefitAmount(gift));
-
-        Console.close();
     }
 
+    private Visitor recieveVisitorData() {
+        OutputView.printWelcomeMessage();
+
+        VisitDate visitDate = recieveVisitDate();
+        MenuOrder menuOrder = recieveMenuOrder();
+        return new Visitor(visitDate, menuOrder);
+    }
 
     private VisitDate recieveVisitDate() {
         while (true) {
@@ -56,6 +51,23 @@ public class PlannerMainController {
                 OutputView.printErrorMessage(error.getMessage());
             }
         }
+    }
+
+    private void printVisitorDataBeforeApplyEvent(Visitor visitor) {
+        OutputView.printResultStartMessage(visitor);
+        OutputView.printMenuOrder(visitor);
+        OutputView.printTotalPrice(visitor);
+    }
+
+
+    private void printResultDataAfterApplyEvent(
+            BenefitResult benefitResult,
+            Visitor visitor,
+            Gift gift) {
+        OutputView.printBenefitsResult(benefitResult.createBenefitHistory(gift));
+        OutputView.printAllBenefitAmount(benefitResult, gift);
+        OutputView.printExpectedPayment(benefitResult, visitor);
+        privideBadge(benefitResult.calculateAllBenefitAmount(gift));
     }
 
 
