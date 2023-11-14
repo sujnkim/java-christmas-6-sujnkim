@@ -1,8 +1,6 @@
 package christmas.domain.plan;
 
 
-import christmas.domain.plan.Menu;
-import christmas.domain.plan.MenuCategory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -51,8 +49,8 @@ class MenuCategoryTest {
 
     @DisplayName("[SUCCESS]주문 메뉴들이 주어졌을 때 음료 카테고리에 속하는 메뉴가 없으면 false를 반환한다")
     @Test
-    void checkIsThereDrinkTypeMenu(){
-        Map<String,Integer> menus = new HashMap<String,Integer>();
+    void checkIsThereDrinkTypeMenu() {
+        Map<String, Integer> menus = new HashMap<String, Integer>();
         menus.put("양송이수프", 1);
         menus.put("티본스테이크", 1);
 
