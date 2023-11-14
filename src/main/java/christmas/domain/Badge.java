@@ -22,4 +22,8 @@ public enum Badge {
                 .sorted()
                 .toList().get(0);
     }
+
+    public String getBadgeName() {
+        return badgeName;
+    }
 }
