@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.domain.visitor.Visitor;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

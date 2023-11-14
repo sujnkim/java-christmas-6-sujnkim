@@ -1,5 +1,8 @@
 package christmas.domain;
 
+import christmas.domain.visitor.MenuOrder;
+import christmas.domain.visitor.VisitDate;
+import christmas.domain.visitor.Visitor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,6 +41,8 @@ class DateEventTest {
     @DisplayName("[SUCCESS]해당 고객에게 적용되는 크리스마스 디데이 할인가를 반환")
     @Test
     void calculateChristmasDDAyDiscount() {
+//        assertThat(DateEvent.CHRISTMAS.calculateDiscount(visitor))
+//                .isEqualTo(3400);
         assertThat(DateEvent.CHRISTMAS.calculateDiscount(visitor))
                 .isEqualTo(3400);
     }

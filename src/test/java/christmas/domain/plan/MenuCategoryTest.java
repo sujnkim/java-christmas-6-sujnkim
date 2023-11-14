@@ -1,6 +1,8 @@
-package christmas.domain;
+package christmas.domain.plan;
 
 
+import christmas.domain.plan.Menu;
+import christmas.domain.plan.MenuCategory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MenuCategoryTest {
     EnumMap<Menu, Integer> orders = new EnumMap<>(Menu.class);

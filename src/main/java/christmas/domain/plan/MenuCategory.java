@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.plan;
 
 import java.util.Arrays;
 import java.util.EnumMap;

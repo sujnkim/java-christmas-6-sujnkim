@@ -1,9 +1,9 @@
 package christmas.view;
 
-import christmas.domain.Badge;
+import christmas.domain.plan.Badge;
 import christmas.domain.BenefitResult;
 import christmas.domain.Gift;
-import christmas.domain.Visitor;
+import christmas.domain.visitor.Visitor;
 
 import java.text.DecimalFormat;
 import java.util.Map;

@@ -1,8 +1,9 @@
 package christmas.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.domain.*;
+import christmas.domain.BenefitResult;
 import christmas.domain.Gift;
+import christmas.domain.plan.Badge;
 import christmas.domain.visitor.MenuOrder;
 import christmas.domain.visitor.VisitDate;
 import christmas.domain.visitor.Visitor;

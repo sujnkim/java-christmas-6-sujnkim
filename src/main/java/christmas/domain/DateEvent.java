@@ -1,5 +1,9 @@
 package christmas.domain;
 
+import christmas.domain.plan.DateConstant;
+import christmas.domain.plan.MenuCategory;
+import christmas.domain.visitor.Visitor;
+
 import java.util.Arrays;
 import java.util.List;
 

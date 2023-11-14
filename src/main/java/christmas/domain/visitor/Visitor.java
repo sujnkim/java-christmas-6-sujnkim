@@ -1,4 +1,6 @@
-package christmas.domain;
+package christmas.domain.visitor;
+
+import christmas.domain.plan.Menu;
 
 import java.util.EnumMap;
 

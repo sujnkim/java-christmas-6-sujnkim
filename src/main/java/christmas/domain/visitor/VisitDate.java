@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.visitor;
 
 import static christmas.utils.ErrorMessage.INVALID_VISIT_DATE;
 

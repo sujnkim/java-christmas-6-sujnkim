@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.plan;
 
 
 import org.junit.jupiter.api.DisplayName;
