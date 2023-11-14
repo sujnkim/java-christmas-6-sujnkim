@@ -31,45 +31,43 @@ public class MenuOrder {
         return menuOrder;
     }
 
-    private void validateQuantityPerMenu(Map<String, Integer> menus){
+    private void validateQuantityPerMenu(Map<String, Integer> menus) {
         menus.entrySet().stream()
-                .forEach(menu->validateQuantity(menu.getValue()));
+                .forEach(menu -> validateQuantity(menu.getValue()));
     }
 
-    private void validateQuantity(int count){
-        if(count < 1){
-            throw new IllegalArgumentException(
-                    INVALID_ORDER.getMessage());
+    private void validateQuantity(int count) {
+        if (count < 1) {
+            throw new IllegalArgumentException(INVALID_ORDER.getMessage());
         }
     }
 
-    private void validateMaxQuantitySum(Map<String, Integer> menus){
+    private void validateMaxQuantitySum(Map<String, Integer> menus) {
         int quantity = menus.entrySet().stream()
-                .map(menu->menu.getValue())
+                .map(menu -> menu.getValue())
                 .mapToInt(Integer::intValue)
                 .sum();
 
-        if(quantity > MAX_QUANTITY){
-            throw new IllegalArgumentException(
-                    INVALID_MAX_QUANTITY.getMessage());
+        if (quantity > MAX_QUANTITY) {
+            throw new IllegalArgumentException(INVALID_MAX_QUANTITY.getMessage());
         }
     }
 
-    private void validateCategoryCondition(Map<String, Integer> menus){
-        if(MenuCategory.hasOrderOnlyDrinkTypeMenu(menus)){
+    private void validateCategoryCondition(Map<String, Integer> menus) {
+        if (MenuCategory.hasOrderOnlyDrinkTypeMenu(menus)) {
             throw new IllegalArgumentException(ONLY_DRINK_ORDER.getMessage());
         }
     }
 
-    public int calculateTotalMenuPrice(){
+    public int calculateTotalMenuPrice() {
         return menuOrder.entrySet().stream()
-                .map(menu->menu.getKey()
+                .map(menu -> menu.getKey()
                         .getMenuPriceSum(menu.getValue()))
                 .mapToInt(Integer::intValue)
                 .sum();
     }
 
-    public EnumMap<Menu, Integer> getMenuOrder(){
+    public EnumMap<Menu, Integer> getMenuOrder() {
         return menuOrder;
     }
 }
