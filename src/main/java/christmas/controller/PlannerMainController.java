@@ -21,8 +21,6 @@ public class PlannerMainController {
 
         BenefitResult benefitResult = new BenefitResult(visitor, gift);
         printResultDataAfterApplyEvent(benefitResult, visitor, gift);
-
-        privideBadge(benefitResult.calculateAllBenefitAmount(gift));
     }
 
     private Visitor recieveVisitorData() {
