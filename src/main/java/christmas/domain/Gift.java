@@ -1,4 +1,6 @@
-package christmas.domain;
+package christmas.domain.result;
+
+import christmas.domain.Menu;
 
 public class Gift {
     private final static int GIFT_OFFER_LEAST_PRICE = 120000;
