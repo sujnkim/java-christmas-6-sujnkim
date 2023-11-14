@@ -41,8 +41,6 @@ class DateEventTest {
     @DisplayName("[SUCCESS]해당 고객에게 적용되는 크리스마스 디데이 할인가를 반환")
     @Test
     void calculateChristmasDDAyDiscount() {
-//        assertThat(DateEvent.CHRISTMAS.calculateDiscount(visitor))
-//                .isEqualTo(3400);
         assertThat(DateEvent.CHRISTMAS.calculateDiscount(visitor))
                 .isEqualTo(3400);
     }
@@ -60,5 +58,4 @@ class DateEventTest {
         assertThat(DateEvent.WEEKEND.calculateDiscount(visitor))
                 .isEqualTo(2 * 2023);
     }
-
 }
