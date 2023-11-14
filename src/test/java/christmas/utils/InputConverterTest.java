@@ -12,6 +12,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InputConverterTest {
 
+    @DisplayName("[SUCCESS]사용자가 입력한 각 날짜를 Integer로 만들어 반환한다")
+    @Test
+    void getVisitDateConvertTest(){
+        String value = "11";
+        assertThat(
+                InputConverter.getDate(value)
+        ).isEqualTo(11);
+    }
+
     @DisplayName("[SUCCESS]사용자가 입력한 각 메뉴를 split하여 Map에 담아 반환한다")
     @Test
     void getMenuOrderAndSplit() {
