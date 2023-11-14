@@ -16,7 +16,7 @@ public class OutputView {
     private static final String MENU_ORDER_FORMAT = "%s %d개";
     private static final String BENEFIT_FORMAT = "%s: -%s원";
     private static final String PRICE_FORMAT = "###,###";
-    private static final String PRICE_MESSAGE = "%s원";
+    private static final String PRICE_MESSAGE_FORMAT = "%s원";
     public static final String MINUS_SIGN = "-";
     private static final String EMPTY_MENT = "없음";
     private static final String EMPTY_LINE = "";
@@ -53,7 +53,7 @@ public class OutputView {
     public static void printTotalPrice(Visitor visitor) {
         printTitle(ResultTitle.TOTAL_PRICE);
         System.out.println(String.format(
-                        PRICE_MESSAGE,
+                        PRICE_MESSAGE_FORMAT,
                         formatter.format(visitor.getTotalMenuPrice())
                 )
         );
@@ -110,16 +110,16 @@ public class OutputView {
 
     private static String createPriceForm(int amount) {
         if (amount == 0) {
-            return PRICE_MESSAGE;
+            return PRICE_MESSAGE_FORMAT;
         }
-        return MINUS_SIGN + PRICE_MESSAGE;
+        return MINUS_SIGN + PRICE_MESSAGE_FORMAT;
     }
 
 
     public static void printExpectedPayment(BenefitResult result, Visitor visitor) {
         printTitle(ResultTitle.EXPECTED_PAYMENT);
         System.out.println(String.format(
-                PRICE_MESSAGE,
+                PRICE_MESSAGE_FORMAT,
                 formatter.format(result.calculateExpectedPayment(visitor))
         ));
         System.out.println(EMPTY_LINE);
