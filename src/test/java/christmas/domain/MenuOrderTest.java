@@ -67,7 +67,7 @@ class MenuOrderTest {
 
     @DisplayName("[SUCCESS] 주문한 메뉴의 총주문 금액을 반환한다")
     @Test
-    void getSumOfMenusOrdered(){
+    void getSumOfMenusOrdered() {
         Map<String, Integer> menus = new HashMap<String, Integer>();
         menus.put("양송이수프", 1);
         menus.put("시저샐러드", 1);
@@ -75,5 +75,4 @@ class MenuOrderTest {
         MenuOrder order = new MenuOrder(menus);
         assertThat(order.calculateTotalMenuPrice()).isEqualTo(14000);
     }
-
 }
