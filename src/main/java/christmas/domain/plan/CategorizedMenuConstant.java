@@ -25,7 +25,8 @@ public class CategorizedMenuConstant {
 
 
     public static final List<Menu> DRINK_MENUS = Arrays.asList(
-            Menu.CHOCOLATE_CAKE,
-            Menu.ICE_CREAM);
+            Menu.ZERO_COKE,
+            Menu.RED_WINE,
+            Menu.CHAMPAGNE);
 
 }
