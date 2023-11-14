@@ -10,6 +10,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.*;
 
 class BenefitResultTest {
+    Visitor visitor;
     BenefitResult benefitResult;
     Gift gift;
 
@@ -21,9 +22,9 @@ class BenefitResultTest {
         menus.put("바비큐립", 1);
         menus.put("초코케이크", 2);
         menus.put("제로콜라", 1);
-        Visitor visitor = new Visitor(visitDate, new MenuOrder(menus));
+        visitor = new Visitor(visitDate, new MenuOrder(menus));
         gift = new Gift(visitor.getTotalMenuPrice());
-        benefitResult = new BenefitResult(visitor);
+        benefitResult = new BenefitResult(visitor, gift);
     }
 
     @DisplayName("[SUCCESS] 혜택 내역을 담은 결과물을 반환한다")
@@ -48,7 +49,7 @@ class BenefitResultTest {
         menus.put("티본스테이크", 1);
         Visitor visitor = new Visitor(visitDate, new MenuOrder(menus));
         gift = new Gift(visitor.getTotalMenuPrice());
-        benefitResult = new BenefitResult(visitor);
+        benefitResult = new BenefitResult(visitor, gift);
 
         Map<String, Integer> result = new HashMap<>();
         result.put("없음", 0);
@@ -71,7 +72,7 @@ class BenefitResultTest {
     @Test
     void successToCalculateExpectedPayment() {
         assertThat(
-                benefitResult.calculateExpectedPayment(142000)
+                benefitResult.calculateExpectedPayment(visitor)
         ).isEqualTo(135754);
     }
 }
