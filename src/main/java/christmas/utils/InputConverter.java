@@ -28,8 +28,15 @@ public class InputConverter {
     }
 
     private static void storeMenu(String value, Map<String, Integer> result) {
+        validateEachMenuForm(value);
         String[] split = value.split(DELIMITER_DASH);
         result.put(split[0], getMenuCount(split[1]));
+    }
+
+    private static void validateEachMenuForm(String value) {
+        if(!value.contains(DELIMITER_DASH)){
+            throw new IllegalArgumentException(INVALID_ORDER.getMessage());
+        }
     }
 
     private static Integer getMenuCount(String value) {
