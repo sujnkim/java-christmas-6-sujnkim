@@ -4,7 +4,7 @@ import christmas.domain.plan.Menu;
 
 public class Gift {
     private final static int GIFT_OFFER_LEAST_PRICE = 120000;
-    private final static Menu gift = Menu.CHAMPAGNE;
+    private final static Menu GIFT_MENU = Menu.CHAMPAGNE;
 
     private final int count;
 
@@ -24,11 +24,11 @@ public class Gift {
     }
 
     public int getGiftBenefitPrice() {
-        return gift.getMenuPriceSum(this.count);
+        return GIFT_MENU.getMenuPriceSum(this.count);
     }
 
     public String getGiftName(){
-        return gift.getMenuName();
+        return GIFT_MENU.getMenuName();
     }
 
 }
