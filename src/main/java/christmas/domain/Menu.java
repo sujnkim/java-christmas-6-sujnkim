@@ -29,10 +29,10 @@ public enum Menu {
     }
 
 
-    public static Menu findMenuByName(String name) {
+    public static Menu findMenuByName(String input) {
         try {
             return Arrays.stream(Menu.values())
-                    .filter(menu -> menu.menuName == name)
+                    .filter(menu -> menu.menuName.equals(input))
                     .findFirst().get();
         } catch (NoSuchElementException error) {
             throw new IllegalArgumentException(INVALID_ORDER.getMessage());
